@@ -19,10 +19,22 @@
             layers = <1>;
         };
 
+        cmben_empty {
+            bindings = <&none>;
+            key-positions = <4 16>;
+            layers = <0>;
+        };
+
         cmbru {
             bindings = <&layer_ru>;
             key-positions = <7 19>;
             layers = <0>;
+        };
+
+        cmbru_empty {
+            bindings = <&none>;
+            key-positions = <7 19>;
+            layers = <1>;
         };
     };
 
