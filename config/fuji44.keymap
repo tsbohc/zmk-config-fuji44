@@ -65,15 +65,23 @@
             require-prior-idle-ms = <125>;
             bindings = <&kp>, <&kp>;
         };
+
+        mo_comma_space: mo_comma_space {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MO_COMMA_SPACE";
+            bindings = <&mo>, <&comma_space>;
+
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <150>;
+        };
     };
 
     macros {
         to_en: to_en {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = 
-               <&kp F21>,
-               <&macro_wait_time 25>;
+            bindings = <&kp F21>, <&macro_wait_time 25>;
 
             label = "TO_EN";
         };
@@ -81,9 +89,7 @@
         to_ru: to_ru {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = 
-               <&kp F22>,
-               <&macro_wait_time 25>;
+            bindings = <&kp F22>, <&macro_wait_time 25>;
 
             label = "TO_RU";
         };
@@ -113,6 +119,13 @@
 
             label = "EN";
         };
+
+        comma_space: comma_space {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp COMMA &kp SPACE>;
+            label = "COMMA_SPACE";
+        };
     };
 
     keymap {
@@ -120,46 +133,46 @@
 
         en {
             bindings = <
-&kp ESC   &kp Q          &kp W             &kp E        &kp R        &kp T        &kp Y        &kp U            &kp I        &kp O              &kp P     &kp MINUS
-&kp CLCK  &hrm LSHIFT A  &hrm LCTRL S      &hrm LALT D  &hrm LGUI F  &kp G        &kp H        &hrm RGUI J      &hrm RALT K  &hrm RSHIFT L      &kp SEMI  &kp SQT
-&kp TAB   &kp Z          &kp X             &kp C        &kp V        &kp B        &kp N        &kp M            &kp COMMA    &kp DOT            &kp FSLH  &kp RIGHT_SHIFT
-                         &kp LEFT_BRACKET  &kp LGUI     &lt 1 TAB    &kp ENTER    &lt 6 SPACE  &lt 4 BACKSPACE  &kp RALT     &kp RIGHT_BRACKET
+&kp ESC   &kp Q          &kp W         &kp E        &kp R        &kp T        &kp Y        &kp U                &kp I             &kp O              &kp P     &kp MINUS
+&kp CLCK  &hrm LSHIFT A  &hrm LCTRL S  &hrm LALT D  &hrm LGUI F  &kp G        &kp H        &hrm RGUI J          &hrm RALT K       &hrm RSHIFT L      &kp SEMI  &kp SQT
+&kp TAB   &kp Z          &kp X         &kp C        &kp V        &kp B        &kp N        &kp M                &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp FSLH  &kp RIGHT_SHIFT
+                         &none         &kp BSPC     &kp RU_DOT   &kp ENTER    &lt 6 SPACE  &mo_comma_space 4 0  &kp COMMA         &none
             >;
         };
 
         ru {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans         &trans            &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans         &trans            &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &kp LESS_THAN  &kp GREATER_THAN  &trans  &trans
+                &trans  &trans  &trans  &trans    &trans  &trans  &trans         &trans
             >;
         };
 
         win {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &kp LBKT  &kp UP    &kp RBKT   &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans    &trans    &trans     &trans  &trans
+                &trans  &trans  &trans  &kp RGUI    &trans  &trans    &trans    &trans
             >;
         };
 
         num {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &kp PLUS       &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &kp N0         &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &kp LS(UNDER)  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans    &trans         &trans  &trans  &trans
             >;
         };
 
         fun {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans
+&trans  &trans     &trans     &trans    &trans    &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp LSHFT  &kp LCTRL  &kp LALT  &kp LGUI  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans     &trans     &trans    &trans    &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                   &trans     &trans    &trans    &trans    &trans  &trans  &trans  &trans
             >;
         };
 
