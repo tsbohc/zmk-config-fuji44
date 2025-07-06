@@ -4,6 +4,7 @@
  * SPDX-License-Identifier: MIT
  */
 
+#include "keys_ru.h"
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
@@ -12,10 +13,16 @@
     combos {
         compatible = "zmk,combos";
 
-        combo_esc {
-            timeout-ms = <50>;
-            key-positions = <0 1>;
-            bindings = <&kp ESC>;
+        cmben {
+            bindings = <&layer_en>;
+            key-positions = <4 16>;
+            layers = <1>;
+        };
+
+        cmbru {
+            bindings = <&layer_ru>;
+            key-positions = <7 19>;
+            layers = <0>;
         };
     };
 
@@ -48,24 +55,99 @@
         };
     };
 
+    macros {
+        to_en: to_en {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = 
+               <&kp F21>,
+               <&macro_wait_time 25>;
+
+            label = "TO_EN";
+        };
+
+        to_ru: to_ru {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = 
+               <&kp F22>,
+               <&macro_wait_time 25>;
+
+            label = "TO_RU";
+        };
+
+        layer_en: layer_en {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &to_en>;
+            label = "LAYER_EN";
+        };
+
+        layer_ru: layer_ru {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 1 &to_ru>;
+            label = "LAYER_RU";
+        };
+
+        en: en {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings =
+                <&to_en &macro_param_1to1 &kp MACRO_PLACEHOLDER>,
+                <&macro_wait_time 10>,
+                <&to_ru>,
+                <&macro_wait_time 10>;
+
+            label = "EN";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
-        def {
+        en {
             bindings = <
-&kp ESC    &kp Q  &kp W             &kp E     &kp R      &kp T          &kp Y        &kp U            &kp I      &kp O              &kp P     &kp MINUS
-&kp LCTRL  &kp A  &kp S             &kp D     &kp F      &kp G          &kp H        &kp J            &kp K      &kp L              &kp SEMI  &kp SQT
-&kp LSHFT  &kp Z  &kp X             &kp C     &kp V      &kp B          &kp N        &kp M            &kp COMMA  &kp DOT            &kp FSLH  &kp BACKSLASH
-                  &kp LEFT_BRACKET  &kp LGUI  &lt 1 TAB  &lt 2 SPACE    &lt 3 ENTER  &lt 4 BACKSPACE  &kp RALT   &kp RIGHT_BRACKET
+&kp ESC   &kp Q          &kp W             &kp E        &kp R        &kp T        &kp Y        &kp U            &kp I        &kp O              &kp P     &kp MINUS
+&kp CLCK  &hrm LSHIFT A  &hrm LCTRL S      &hrm LALT D  &hrm LGUI F  &kp G        &kp H        &hrm RGUI J      &hrm RALT K  &hrm RSHIFT L      &kp SEMI  &kp SQT
+&kp TAB   &kp Z          &kp X             &kp C        &kp V        &kp B        &kp N        &kp M            &kp COMMA    &kp DOT            &kp FSLH  &kp RIGHT_SHIFT
+                         &kp LEFT_BRACKET  &kp LGUI     &lt 1 TAB    &kp ENTER    &lt 6 SPACE  &lt 4 BACKSPACE  &kp RALT     &kp RIGHT_BRACKET
             >;
         };
 
-        nav {
+        ru {
             bindings = <
-&trans  &trans        &trans        &trans     &trans          &trans    &trans    &trans         &trans     &trans     &trans  &trans
-&trans  &kp LEFT_WIN  &kp LEFT_ALT  &kp LCTRL  &kp LEFT_SHIFT  &trans    &kp LEFT  &kp DOWN       &kp UP     &kp RIGHT  &trans  &trans
-&trans  &trans        &trans        &trans     &trans          &trans    &kp HOME  &kp PAGE_DOWN  &kp PG_UP  &kp END    &trans  &trans
-                      &trans        &trans     &trans          &trans    &trans    &trans         &trans     &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans
+            >;
+        };
+
+        win {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans
+            >;
+        };
+
+        num {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans
+            >;
+        };
+
+        fun {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans
             >;
         };
 
@@ -78,21 +160,12 @@
             >;
         };
 
-        num {
+        nav {
             bindings = <
-&kp LEFT_PARENTHESIS   &kp MINUS   &kp N7        &kp N8        &kp N9        &kp PLUS        &trans  &trans           &trans     &trans    &trans         &trans
-&kp COMMA              &kp PERIOD  &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp EQUAL       &trans  &kp RIGHT_SHIFT  &kp RCTRL  &kp LALT  &kp RIGHT_WIN  &trans
-&kp RIGHT_PARENTHESIS  &kp SLASH   &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp ASTERISK    &trans  &trans           &trans     &trans    &trans         &trans
-                                   &kp N0        &trans        &trans        &kp SPACE       &trans  &trans           &trans     &trans
-            >;
-        };
-
-        sym {
-            bindings = <
-&kp LEFT_BRACE   &kp MINUS  &kp AMPERSAND          &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp PLUS        &trans  &trans      &trans     &trans        &trans         &trans
-&kp COMMA        &kp DOT    &kp DOLLAR             &kp PERCENT   &kp CARET             &kp EQUAL       &trans  &kp RSHIFT  &kp RCTRL  &kp LEFT_ALT  &kp RIGHT_WIN  &trans
-&kp RIGHT_BRACE  &kp SLASH  &kp EXCL               &kp AT_SIGN   &kp HASH              &kp ASTERISK    &trans  &trans      &trans     &trans        &trans         &trans
-                            &kp RIGHT_PARENTHESIS  &kp GRAVE     &trans                &kp SPACE       &trans  &trans      &trans     &trans
+&trans  &trans     &trans     &trans    &trans    &trans    &trans  &kp PG_DN     &kp UP    &kp PG_UP  &trans        &trans
+&trans  &kp LSHFT  &kp LCTRL  &kp LALT  &kp LGUI  &trans    &trans  &kp LEFT      &kp DOWN  &kp RIGHT  &kp BSPC      &trans
+&trans  &trans     &trans     &trans    &trans    &trans    &trans  &kp LG(FSLH)  &trans    &trans     &kp LA(BSPC)  &trans
+                   &trans     &trans    &trans    &trans    &trans  &trans        &trans    &trans
             >;
         };
     };

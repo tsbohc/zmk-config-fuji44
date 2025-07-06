@@ -1,0 +1,56 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build ZMK Firmware",
+            "type": "shell",
+            "command": "./build.sh",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "Build ZMK Firmware (with custom ZMK root)",
+            "type": "shell",
+            "command": "./build.sh",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "args": [
+                "--zmk-root",
+                "${input:zmkRootPath}"
+            ]
+        }
+    ],
+    "inputs": [
+        {
+            "id": "zmkRootPath",
+            "description": "Path to ZMK firmware root directory",
+            "default": "/Users/vadim/Developer/sources/zmkfirmware/zmk",
+            "type": "promptString"
+        }
+    ]
+} 
