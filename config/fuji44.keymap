@@ -73,6 +73,16 @@
             tapping-term-ms = <150>;
             flavor = "tap-preferred";
         };
+
+        mod_kp: mod_kp {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MOD_KP";
+            bindings = <&mo>, <&kp>;
+
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <150>;
+        };
     };
 
     macros {
