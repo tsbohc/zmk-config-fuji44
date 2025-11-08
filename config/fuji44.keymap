@@ -113,10 +113,10 @@
 
         def {
             bindings = <
-&kp ESC    &kp Q              &kp W                &kp E            &kp R            &kp T          &kp Y      &kp U             &kp I                  &kp O                 &kp P                  &bh_bcksp_del
-&kp TAB    &hmr LEFT_SHIFT A  &hml LEFT_CONTROL S  &hml LEFT_ALT D  &hml LEFT_GUI F  &kp G          &kp H      &hmr RIGHT_GUI J  &hmr RIGHT_ALT K       &hmr RIGHT_CONTROL L  &hmr RIGHT_SHIFT SEMI  &kp SQT
-&kp LSHFT  &kp Z              &kp X                &kp C            &kp V            &kp B          &kp N      &kp M             &kp COMMA              &kp DOT               &kp FSLH               &kp BACKSLASH
-                              &kp LEFT_CONTROL     &kp LGUI         &mo 1            &lt 3 SPACE    &kp ENTER  &mo 2             &mt RALT LEFT_BRACKET  &kp RIGHT_BRACKET
+&kp ESC    &kp Q              &kp W                &kp E            &kp R            &kp T          &kp Y        &kp U             &kp I                  &kp O                 &kp P                  &bh_bcksp_del
+&kp TAB    &hmr LEFT_SHIFT A  &hml LEFT_CONTROL S  &hml LEFT_ALT D  &hml LEFT_GUI F  &kp G          &kp H        &hmr RIGHT_GUI J  &hmr RIGHT_ALT K       &hmr RIGHT_CONTROL L  &hmr RIGHT_SHIFT SEMI  &kp SQT
+&kp LSHFT  &kp Z              &kp X                &kp C            &kp V            &kp B          &kp N        &kp M             &kp COMMA              &kp DOT               &kp FSLH               &kp BACKSLASH
+                              &kp LEFT_CONTROL     &kp LEFT_ALT     &kp LEFT_GUI     &lt 1 SPACE    &lt 3 ENTER  &mo 2             &mt RALT LEFT_BRACKET  &kp RIGHT_BRACKET
             >;
         };
 
@@ -131,10 +131,10 @@
 
         num {
             bindings = <
-&trans  &kp NUMBER_1  &kp NUMBER_2      &kp NUMBER_3  &kp NUMBER_4  &kp NUMBER_5    &kp F1  &kp F2  &kp F3  &kp F4   &kp F5   &kp F6
-&trans  &kp N6        &kp NUMBER_7      &kp NUMBER_8  &kp NUMBER_9  &kp NUMBER_0    &kp F7  &kp F8  &kp F9  &kp F10  &kp F11  &kp F12
-&trans  &trans        &trans            &trans        &trans        &trans          &trans  &trans  &trans  &trans   &trans   &trans
-                      &kp LEFT_CONTROL  &kp LEFT_ALT  &trans        &trans          &trans  &trans  &trans  &trans
+&trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp NUMBER_5    &kp F1  &kp F2  &kp F3  &kp F4   &kp F5   &kp F6
+&trans  &kp N6        &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp NUMBER_0    &kp F7  &kp F8  &kp F9  &kp F10  &kp F11  &kp F12
+&trans  &trans        &trans        &trans        &trans        &trans          &trans  &trans  &trans  &trans   &trans   &trans
+                      &trans        &trans        &trans        &trans          &trans  &trans  &trans  &trans
             >;
 
             label = "Num_Lr";
