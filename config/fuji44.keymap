@@ -79,6 +79,24 @@
             hold-trigger-on-release;
             hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38 39>;
         };
+
+        bh_fwslsl_lftbrckt: bh_fwslsl_lftbrckt {
+            compatible = "zmk,behavior-mod-morph";
+            label = "BH_FWSLSL_LFTBRCKT";
+            bindings = <&kp FSLH>, <&kp LEFT_BRACKET>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_RALT)>;
+        };
+
+        bh_bckslsh_rghtbrckt: bh_bckslsh_rghtbrckt {
+            compatible = "zmk,behavior-mod-morph";
+            label = "BH_BCKSLSH_RGHTBRCKT";
+            bindings = <&kp FSLH>, <&kp RIGHT_BRACKET>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_RALT)>;
+        };
     };
 
     keymap {
