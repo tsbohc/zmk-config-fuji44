@@ -163,7 +163,7 @@
         compatible = "zmk,conditional-layers";
 
         sys_lr {
-            if-layers = <0 1>;
+            if-layers = <1 2>;
             then-layer = <4>;
         };
     };
